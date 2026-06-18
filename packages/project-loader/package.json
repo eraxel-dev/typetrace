@@ -15,7 +15,12 @@
     "build": "tsc --build"
   },
   "dependencies": {
-    "@unravel/shared": "workspace:*",
+    "@unravel/shared": "workspace:*"
+  },
+  "peerDependencies": {
+    "typescript": "^5.7.2"
+  },
+  "devDependencies": {
     "typescript": "^5.7.2"
   }
 }
