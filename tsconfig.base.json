@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "moduleDetection": "force",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "paths": {
+      "@unravel/shared": ["./packages/shared/src/index.ts"],
+      "@unravel/project-loader": ["./packages/project-loader/src/index.ts"],
+      "@unravel/trace-engine": ["./packages/trace-engine/src/index.ts"],
+      "@unravel/graph-engine": ["./packages/graph-engine/src/index.ts"],
+      "@unravel/reporters": ["./packages/reporters/src/index.ts"],
+      "@unravel/cli": ["./packages/cli/src/index.ts"]
+    }
+  }
+}

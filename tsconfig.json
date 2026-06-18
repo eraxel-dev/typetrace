@@ -1,0 +1,11 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./packages/shared" },
+    { "path": "./packages/project-loader" },
+    { "path": "./packages/trace-engine" },
+    { "path": "./packages/graph-engine" },
+    { "path": "./packages/reporters" },
+    { "path": "./packages/cli" }
+  ]
+}

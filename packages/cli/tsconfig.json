@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./dist"
+  },
+  "include": ["src/**/*.ts"],
+  "references": [
+    { "path": "../shared" },
+    { "path": "../project-loader" },
+    { "path": "../trace-engine" },
+    { "path": "../graph-engine" },
+    { "path": "../reporters" }
+  ]
+}
