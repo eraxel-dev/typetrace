@@ -1,0 +1,7 @@
+packages:
+  - "packages/cli"
+  - "packages/project-loader"
+  - "packages/trace-engine"
+  - "packages/graph-engine"
+  - "packages/reporters"
+  - "packages/shared"
