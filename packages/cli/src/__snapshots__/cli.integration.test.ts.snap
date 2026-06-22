@@ -1,0 +1,73 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`cli: trace command (text output) > traces the conditional-type fixture and matches the text snapshot 1`] = `
+"Symbol: T extends string ? "yes" : "no"
+
+  Step 1  T → string
+          conditional check
+
+
+Final type: IsString<T>
+"
+`;
+
+exports[`cli: trace command (text output) > traces the generic-infer fixture and matches the text snapshot 1`] = `
+"Symbol: T
+
+  Step 1  T → string
+          type parameter constrained to string
+
+
+Final type: T
+"
+`;
+
+exports[`cli: trace command (text output) > traces the nested fixture and matches the text snapshot 1`] = `
+"Symbol: | (T extends string ? "is-string" : "not-string")
+  | (T extends number ? "is-number" : "not-number")
+
+  Step 1  Describe<T> → T extends string ? "is-string" : "not-string"
+          union member
+
+  Step 2  T → string
+          conditional check
+
+  Step 3  T extends string ? "is-string" : "not-string" → "is-string"
+          conditional true branch
+
+  Step 4  Describe<T> → T extends number ? "is-number" : "not-number"
+          union member
+
+  Step 5  T → number
+          conditional check
+
+  Step 6  T extends number ? "is-number" : "not-number" → "is-number"
+          conditional true branch
+
+
+Final type: Describe<T>
+"
+`;
+
+exports[`cli: trace command (text output) > traces the primitive fixture and matches the text snapshot 1`] = `
+"Symbol: answer
+
+No inference steps — type is a plain literal.
+
+Final type: 42
+"
+`;
+
+exports[`cli: trace command (text output) > traces the union-type fixture and matches the text snapshot 1`] = `
+"Symbol: pet
+
+  Step 1  Cat | Dog → Cat
+          union member
+
+  Step 2  Cat | Dog → Dog
+          union member
+
+
+Final type: Cat | Dog
+"
+`;
