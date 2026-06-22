@@ -5,12 +5,18 @@
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "bin": {
+    "unravel": "dist/index.js"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     }
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc --build"
   },
@@ -19,6 +25,7 @@
     "@unravel/project-loader": "workspace:*",
     "@unravel/reporters": "workspace:*",
     "@unravel/shared": "workspace:*",
-    "@unravel/trace-engine": "workspace:*"
+    "@unravel/trace-engine": "workspace:*",
+    "commander": "^12.1.0"
   }
 }
