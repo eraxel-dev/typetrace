@@ -1,14 +1,15 @@
 {
-  "name": "unravel",
+  "name": "unravel-workspace",
   "version": "0.1.0",
   "private": true,
-  "description": "Unravel — TypeScript type inference debugger",
+  "description": "Unravel — TypeScript type inference debugger (monorepo root)",
   "type": "module",
   "scripts": {
     "build": "tsc --build",
     "clean": "tsc --build --clean",
     "lint": "eslint .",
-    "test": "vitest run"
+    "test": "vitest run",
+    "publish:all": "pnpm -r publish --access public"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",

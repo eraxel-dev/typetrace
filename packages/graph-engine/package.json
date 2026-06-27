@@ -1,7 +1,7 @@
 {
   "name": "@unravel/graph-engine",
   "version": "0.1.0",
-  "private": true,
+  "description": "Graph engine for the unravel TypeScript type-inference debugger",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -11,9 +11,21 @@
       "import": "./dist/index.js"
     }
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "tsc --build"
+    "build": "tsc --build",
+    "prepublishOnly": "tsc --build"
   },
+  "license": "MIT",
+  "author": "Eraxel.Dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eraxel-dev/unravel.git",
+    "directory": "packages/graph-engine"
+  },
+  "homepage": "https://github.com/eraxel-dev/unravel#readme",
   "dependencies": {
     "@unravel/shared": "workspace:*"
   }

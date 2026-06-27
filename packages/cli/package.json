@@ -1,7 +1,7 @@
 {
-  "name": "@unravel/cli",
+  "name": "unravel",
   "version": "0.1.0",
-  "private": true,
+  "description": "TypeScript type inference debugger — understand WHY a type became this type",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -18,7 +18,27 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc --build"
+    "build": "tsc --build",
+    "prepublishOnly": "tsc --build"
+  },
+  "keywords": [
+    "typescript",
+    "type-inference",
+    "debugger",
+    "cli",
+    "types",
+    "developer-tools"
+  ],
+  "license": "MIT",
+  "author": "Eraxel.Dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eraxel-dev/unravel.git",
+    "directory": "packages/cli"
+  },
+  "homepage": "https://github.com/eraxel-dev/unravel#readme",
+  "engines": {
+    "node": ">=20"
   },
   "dependencies": {
     "@unravel/graph-engine": "workspace:*",
