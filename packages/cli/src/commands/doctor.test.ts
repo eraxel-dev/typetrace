@@ -5,7 +5,7 @@ import { join } from "node:path";
 import * as ts from "typescript";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { clearProgramCache } from "@unravel/project-loader";
+import { clearProgramCache } from "@typetrace/project-loader";
 
 import { doctorCommand } from "./doctor.js";
 

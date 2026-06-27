@@ -1,8 +1,8 @@
-# unravel
+# typetrace
 
 Understand WHY a type became this type.
 
-`unravel` is a TypeScript type-inference debugger. Point it at a source file and it
+`typetrace` is a TypeScript type-inference debugger. Point it at a source file and it
 reconstructs the step-by-step path the TypeScript checker followed to resolve a
 type — every `union`, `conditional` and `infer` transformation along the way.
 
@@ -11,14 +11,14 @@ type — every `union`, `conditional` and `infer` transformation along the way.
 Run it directly with `npx` (no install required):
 
 ```sh
-npx unravel trace src/index.ts
+npx typetrace trace src/index.ts
 ```
 
 Or install it globally:
 
 ```sh
-npm install -g unravel
-unravel trace src/index.ts
+npm install -g typetrace
+typetrace trace src/index.ts
 ```
 
 ## Quickstart
@@ -26,10 +26,10 @@ unravel trace src/index.ts
 From any TypeScript project (one containing a `tsconfig.json`):
 
 ```sh
-npx unravel trace src/index.ts
+npx typetrace trace src/index.ts
 ```
 
-`unravel` walks up from the target file to locate the nearest `tsconfig.json`,
+`typetrace` walks up from the target file to locate the nearest `tsconfig.json`,
 loads the project, traces the first top-level declaration, and prints the
 inference steps:
 
@@ -49,7 +49,7 @@ Final type: Cat | Dog
 Add `--json` for machine-readable output:
 
 ```sh
-npx unravel trace src/index.ts --json
+npx typetrace trace src/index.ts --json
 ```
 
 ```json
@@ -67,14 +67,14 @@ npx unravel trace src/index.ts --json
 
 | Command | Flags | Description |
 |---------|-------|-------------|
-| `unravel trace <file>` | `--json` | Show the type-inference steps for the first top-level declaration in `<file>`. |
-| `unravel doctor` | — | Print environment diagnostics (TypeScript version, tsconfig, program, cache). |
-| `unravel version` | — | Print `unravel/<version>`. |
+| `typetrace trace <file>` | `--json` | Show the type-inference steps for the first top-level declaration in `<file>`. |
+| `typetrace doctor` | — | Print environment diagnostics (TypeScript version, tsconfig, program, cache). |
+| `typetrace version` | — | Print `typetrace/<version>`. |
 
 ### `doctor`
 
 ```sh
-npx unravel doctor
+npx typetrace doctor
 ```
 
 ```
@@ -109,8 +109,8 @@ pnpm test
 
 ## Publishing to npm
 
-The repo contains six packages. `unravel` (the CLI) is the only one users install
-directly; the `@unravel/*` packages are its transitive dependencies and must be
+The repo contains six packages. `typetrace` (the CLI) is the only one users install
+directly; the `@typetrace/*` packages are its transitive dependencies and must be
 published alongside it.
 
 ### One-time setup
@@ -120,8 +120,8 @@ published alongside it.
    ```sh
    npm login
    ```
-3. The `@unravel` scope must exist on npm and be linked to your account (or org).
-   Create it at <https://www.npmjs.com/org/create> — use `unravel` as the org name.
+3. The `@typetrace` scope must exist on npm and be linked to your account (or org).
+   Create it at <https://www.npmjs.com/org/create> — use `typetrace` as the org name.
 
 ### Release steps
 
@@ -144,6 +144,6 @@ package that is not marked `private`.
 
 ```sh
 # Smoke-test the published binary
-npx unravel@0.1.0 version
-# → unravel/0.1.0
+npx typetrace@0.1.0 version
+# → typetrace/0.1.0
 ```

@@ -1,1 +1,1 @@
-export type { Graph, GraphEdge, GraphNode } from "@unravel/shared";
+export type { Graph, GraphEdge, GraphNode } from "@typetrace/shared";

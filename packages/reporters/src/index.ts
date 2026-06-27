@@ -1,4 +1,4 @@
-export type { TraceResult } from "@unravel/shared";
+export type { TraceResult } from "@typetrace/shared";
 
 export type { Reporter, ReporterFormat } from "./types.js";
 export { TextReporter } from "./text.js";

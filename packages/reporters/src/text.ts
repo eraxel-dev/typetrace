@@ -1,4 +1,4 @@
-import type { TraceResult, TraceStep } from "@unravel/shared";
+import type { TraceResult, TraceStep } from "@typetrace/shared";
 
 import type { Reporter } from "./types.js";
 

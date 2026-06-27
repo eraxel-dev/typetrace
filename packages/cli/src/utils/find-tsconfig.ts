@@ -8,7 +8,7 @@ import { dirname, join, resolve } from "node:path";
  * The search begins in `startDir` itself and ascends one parent at a time until
  * a `tsconfig.json` is found or the filesystem root is reached. If none is
  * found, an error is thrown whose message exactly matches the contract shared
- * with `@unravel/project-loader` so that callers can surface a single,
+ * with `@typetrace/project-loader` so that callers can surface a single,
  * consistent diagnostic.
  *
  * @param startDir - the directory to begin searching from (absolute or relative)

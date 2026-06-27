@@ -1,6 +1,6 @@
 import * as ts from "typescript";
 
-import type { TraceStep } from "@unravel/shared";
+import type { TraceStep } from "@typetrace/shared";
 
 import { rememberType } from "./cache.js";
 import type { StepIdGenerator } from "./utils.js";

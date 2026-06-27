@@ -20,12 +20,12 @@
     "declarationMap": true,
     "sourceMap": true,
     "paths": {
-      "@unravel/shared": ["./packages/shared/src/index.ts"],
-      "@unravel/project-loader": ["./packages/project-loader/src/index.ts"],
-      "@unravel/trace-engine": ["./packages/trace-engine/src/index.ts"],
-      "@unravel/graph-engine": ["./packages/graph-engine/src/index.ts"],
-      "@unravel/reporters": ["./packages/reporters/src/index.ts"],
-      "@unravel/cli": ["./packages/cli/src/index.ts"]
+      "@typetrace/shared": ["./packages/shared/src/index.ts"],
+      "@typetrace/project-loader": ["./packages/project-loader/src/index.ts"],
+      "@typetrace/trace-engine": ["./packages/trace-engine/src/index.ts"],
+      "@typetrace/graph-engine": ["./packages/graph-engine/src/index.ts"],
+      "@typetrace/reporters": ["./packages/reporters/src/index.ts"],
+      "@typetrace/cli": ["./packages/cli/src/index.ts"]
     }
   }
 }

@@ -5,7 +5,7 @@ import { join } from "node:path";
 import * as ts from "typescript";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
-import type { ProjectContext, TraceStep } from "@unravel/shared";
+import type { ProjectContext, TraceStep } from "@typetrace/shared";
 
 import {
   clearTraceCaches,

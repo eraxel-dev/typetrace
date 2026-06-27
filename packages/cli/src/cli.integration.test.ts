@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 
 import { beforeAll, describe, expect, it } from "vitest";
 
-import type { TraceResult } from "@unravel/shared";
+import type { TraceResult } from "@typetrace/shared";
 
 /**
  * End-to-end CLI integration tests. The compiled binary (`dist/index.js`) is
@@ -198,6 +198,6 @@ describe("cli: version command", () => {
 
     expect(result.status).toBe(0);
     expect(result.stdout).toContain(packageVersion);
-    expect(result.stdout.trim()).toBe(`unravel/${packageVersion}`);
+    expect(result.stdout.trim()).toBe(`typetrace/${packageVersion}`);
   });
 });

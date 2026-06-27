@@ -1,5 +1,5 @@
 {
-  "name": "@unravel/trace-engine",
+  "name": "@typetrace/trace-engine",
   "version": "0.1.0",
   "description": "Trace engine for the unravel TypeScript type-inference debugger",
   "type": "module",
@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/eraxel-dev/unravel#readme",
   "dependencies": {
-    "@unravel/shared": "workspace:*",
+    "@typetrace/shared": "workspace:*",
     "typescript": "^5.7.2"
   }
 }

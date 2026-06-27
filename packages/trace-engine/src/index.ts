@@ -1,6 +1,6 @@
 import * as ts from "typescript";
 
-import type { ProjectContext, TraceResult, TraceStep } from "@unravel/shared";
+import type { ProjectContext, TraceResult, TraceStep } from "@typetrace/shared";
 
 import {
   getCachedTrace,
@@ -11,7 +11,7 @@ import {
 import { createStepIdGenerator, typeToString } from "./utils.js";
 import { walkType } from "./walker.js";
 
-export type { TraceResult, TraceStep, TraceStepKind } from "@unravel/shared";
+export type { TraceResult, TraceStep, TraceStepKind } from "@typetrace/shared";
 export { clearTraceCaches } from "./cache.js";
 
 /**

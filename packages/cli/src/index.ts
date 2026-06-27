@@ -8,7 +8,7 @@ import { Command } from "commander";
 import { doctorCommand } from "./commands/doctor.js";
 import { traceCommand } from "./commands/trace.js";
 
-export type { TraceResult } from "@unravel/shared";
+export type { TraceResult } from "@typetrace/shared";
 
 /**
  * Resolve this package's version from its `package.json`. The file is read at
@@ -33,7 +33,7 @@ export function buildProgram(): Command {
   const program = new Command();
 
   program
-    .name("unravel")
+    .name("typetrace")
     .description("TypeScript type inference debugger")
     .version(VERSION);
 
@@ -55,9 +55,9 @@ export function buildProgram(): Command {
 
   program
     .command("version")
-    .description("Print the unravel version")
+    .description("Print the typetrace version")
     .action(() => {
-      process.stdout.write(`unravel/${VERSION}\n`);
+      process.stdout.write(`typetrace/${VERSION}\n`);
     });
 
   return program;

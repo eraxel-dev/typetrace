@@ -1,5 +1,5 @@
 {
-  "name": "@unravel/project-loader",
+  "name": "@typetrace/project-loader",
   "version": "0.1.0",
   "description": "Project loader for the unravel TypeScript type-inference debugger",
   "type": "module",
@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/eraxel-dev/unravel#readme",
   "dependencies": {
-    "@unravel/shared": "workspace:*"
+    "@typetrace/shared": "workspace:*"
   },
   "peerDependencies": {
     "typescript": "^5.7.2"

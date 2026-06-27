@@ -3,11 +3,11 @@ import { dirname, resolve } from "node:path";
 
 import * as ts from "typescript";
 
-import type { ProjectContext } from "@unravel/shared";
+import type { ProjectContext } from "@typetrace/shared";
 
 import { getCachedProgram, setCachedProgram } from "./cache.js";
 
-export type { ProjectContext } from "@unravel/shared";
+export type { ProjectContext } from "@typetrace/shared";
 export { clearProgramCache } from "./cache.js";
 
 /**

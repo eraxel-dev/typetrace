@@ -65,7 +65,7 @@ describe("buildProgram", () => {
   it("configures the program name, version and description", () => {
     const program = buildProgram();
 
-    expect(program.name()).toBe("unravel");
+    expect(program.name()).toBe("typetrace");
     expect(program.version()).toBe(pkg.version);
     expect(program.description()).toBe("TypeScript type inference debugger");
   });
@@ -102,12 +102,12 @@ describe("buildProgram", () => {
     expect(doctorCommand).toHaveBeenCalledTimes(1);
   });
 
-  it("prints `unravel/<version>` for the version command", () => {
+  it("prints `typetrace/<version>` for the version command", () => {
     const program = buildProgram();
 
     parse(program, ["version"]);
 
-    expect(stdout).toBe(`unravel/${pkg.version}\n`);
+    expect(stdout).toBe(`typetrace/${pkg.version}\n`);
   });
 
   it("throws a commander.* error for an unknown command", () => {

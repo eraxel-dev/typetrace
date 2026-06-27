@@ -22,7 +22,7 @@ import type {
  * real signal we want for a type-contract package.
  */
 
-describe("@unravel/shared type contract", () => {
+describe("@typetrace/shared type contract", () => {
   it("TraceStepKind admits exactly the five v0.1 kinds", () => {
     const kinds: TraceStepKind[] = [
       "infer",

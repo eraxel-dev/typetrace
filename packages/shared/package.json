@@ -1,5 +1,5 @@
 {
-  "name": "@unravel/shared",
+  "name": "@typetrace/shared",
   "version": "0.1.0",
   "description": "Shared types and utilities for the unravel TypeScript type-inference debugger",
   "type": "module",

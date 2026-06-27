@@ -1,4 +1,4 @@
-import type { TraceResult } from "@unravel/shared";
+import type { TraceResult } from "@typetrace/shared";
 
 export type ReporterFormat = "text" | "json";
 

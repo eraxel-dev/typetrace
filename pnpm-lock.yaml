@@ -38,19 +38,19 @@ importers:
 
   packages/cli:
     dependencies:
-      '@unravel/graph-engine':
+      '@typetrace/graph-engine':
         specifier: workspace:*
         version: link:../graph-engine
-      '@unravel/project-loader':
+      '@typetrace/project-loader':
         specifier: workspace:*
         version: link:../project-loader
-      '@unravel/reporters':
+      '@typetrace/reporters':
         specifier: workspace:*
         version: link:../reporters
-      '@unravel/shared':
+      '@typetrace/shared':
         specifier: workspace:*
         version: link:../shared
-      '@unravel/trace-engine':
+      '@typetrace/trace-engine':
         specifier: workspace:*
         version: link:../trace-engine
       commander:
@@ -59,13 +59,13 @@ importers:
 
   packages/graph-engine:
     dependencies:
-      '@unravel/shared':
+      '@typetrace/shared':
         specifier: workspace:*
         version: link:../shared
 
   packages/project-loader:
     dependencies:
-      '@unravel/shared':
+      '@typetrace/shared':
         specifier: workspace:*
         version: link:../shared
     devDependencies:
@@ -75,7 +75,7 @@ importers:
 
   packages/reporters:
     dependencies:
-      '@unravel/shared':
+      '@typetrace/shared':
         specifier: workspace:*
         version: link:../shared
 
@@ -87,7 +87,7 @@ importers:
 
   packages/trace-engine:
     dependencies:
-      '@unravel/shared':
+      '@typetrace/shared':
         specifier: workspace:*
         version: link:../shared
       typescript:

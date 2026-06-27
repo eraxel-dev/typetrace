@@ -1,12 +1,12 @@
 {
-  "name": "unravel",
+  "name": "typetrace",
   "version": "0.1.0",
   "description": "TypeScript type inference debugger — understand WHY a type became this type",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
-    "unravel": "dist/index.js"
+    "typetrace": "dist/index.js"
   },
   "exports": {
     ".": {
@@ -41,11 +41,11 @@
     "node": ">=20"
   },
   "dependencies": {
-    "@unravel/graph-engine": "workspace:*",
-    "@unravel/project-loader": "workspace:*",
-    "@unravel/reporters": "workspace:*",
-    "@unravel/shared": "workspace:*",
-    "@unravel/trace-engine": "workspace:*",
+    "@typetrace/graph-engine": "workspace:*",
+    "@typetrace/project-loader": "workspace:*",
+    "@typetrace/reporters": "workspace:*",
+    "@typetrace/shared": "workspace:*",
+    "@typetrace/trace-engine": "workspace:*",
     "commander": "^12.1.0"
   }
 }

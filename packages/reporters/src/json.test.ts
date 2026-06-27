@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import type { TraceResult } from "@unravel/shared";
+import type { TraceResult } from "@typetrace/shared";
 
 import { JsonReporter } from "./json.js";
 

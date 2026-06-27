@@ -1,6 +1,6 @@
 import * as ts from "typescript";
 
-import { clearProgramCache, loadProject } from "@unravel/project-loader";
+import { clearProgramCache, loadProject } from "@typetrace/project-loader";
 
 import { findTsconfig } from "../utils/find-tsconfig.js";
 

@@ -1,8 +1,8 @@
 import { dirname, resolve } from "node:path";
 
-import { loadProject } from "@unravel/project-loader";
-import { createReporter } from "@unravel/reporters";
-import { traceNode } from "@unravel/trace-engine";
+import { loadProject } from "@typetrace/project-loader";
+import { createReporter } from "@typetrace/reporters";
+import { traceNode } from "@typetrace/trace-engine";
 
 import { findTsconfig } from "../utils/find-tsconfig.js";
 import { selectTraceNode } from "../utils/select-node.js";
