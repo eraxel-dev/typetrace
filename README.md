@@ -11,13 +11,13 @@ type — every `union`, `conditional` and `infer` transformation along the way.
 Run it directly with `npx` (no install required):
 
 ```sh
-npx typetrace trace src/index.ts
+npx @typetrace/cli trace src/index.ts
 ```
 
 Or install it globally:
 
 ```sh
-npm install -g typetrace
+npm install -g @typetrace/cli
 typetrace trace src/index.ts
 ```
 
@@ -26,7 +26,7 @@ typetrace trace src/index.ts
 From any TypeScript project (one containing a `tsconfig.json`):
 
 ```sh
-npx typetrace trace src/index.ts
+npx @typetrace/cli trace src/index.ts
 ```
 
 `typetrace` walks up from the target file to locate the nearest `tsconfig.json`,
@@ -144,6 +144,6 @@ package that is not marked `private`.
 
 ```sh
 # Smoke-test the published binary
-npx typetrace@0.1.0 version
+npx @typetrace/cli@0.1.0 version
 # → typetrace/0.1.0
 ```

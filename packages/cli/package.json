@@ -1,5 +1,5 @@
 {
-  "name": "typetrace",
+  "name": "@typetrace/cli",
   "version": "0.1.0",
   "description": "TypeScript type inference debugger — understand WHY a type became this type",
   "type": "module",
