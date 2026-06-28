@@ -9,7 +9,7 @@ import { findTsconfig } from "./find-tsconfig.js";
 let root: string;
 
 beforeEach(() => {
-  root = mkdtempSync(join(tmpdir(), "unravel-find-tsconfig-"));
+  root = mkdtempSync(join(tmpdir(), "typetrace-find-tsconfig-"));
 });
 
 afterEach(() => {

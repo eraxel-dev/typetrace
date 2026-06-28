@@ -35,7 +35,7 @@ const validTsconfig = {
 
 beforeEach(() => {
   clearProgramCache();
-  projectDir = mkdtempSync(join(tmpdir(), "unravel-project-loader-"));
+  projectDir = mkdtempSync(join(tmpdir(), "typetrace-project-loader-"));
 });
 
 afterEach(() => {

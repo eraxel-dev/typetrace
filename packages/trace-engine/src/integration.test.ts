@@ -20,7 +20,7 @@ import { traceNode } from "./index.js";
 
 let projectDir: string;
 
-const FIXTURE = `// Unravel trace-engine integration fixture
+const FIXTURE = `// Typetrace trace-engine integration fixture
 export interface User {
   id: number;
   name: string;
@@ -72,7 +72,7 @@ function findVariableNode(sourceFile: ts.SourceFile, name: string): ts.Node {
 
 beforeEach(() => {
   clearTraceCaches();
-  projectDir = mkdtempSync(join(tmpdir(), "unravel-trace-engine-integration-"));
+  projectDir = mkdtempSync(join(tmpdir(), "typetrace-trace-engine-integration-"));
 });
 
 afterEach(() => {

@@ -1,8 +1,8 @@
 {
-  "name": "unravel-workspace",
+  "name": "typetrace-workspace",
   "version": "0.1.0",
   "private": true,
-  "description": "Unravel — TypeScript type inference debugger (monorepo root)",
+  "description": "Typetrace — TypeScript type inference debugger (monorepo root)",
   "type": "module",
   "scripts": {
     "build": "tsc --build",

@@ -1,7 +1,7 @@
 {
   "name": "@typetrace/trace-engine",
   "version": "0.1.0",
-  "description": "Trace engine for the unravel TypeScript type-inference debugger",
+  "description": "Trace engine for the typetrace TypeScript type-inference debugger",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -22,10 +22,10 @@
   "author": "Eraxel.Dev",
   "repository": {
     "type": "git",
-    "url": "https://github.com/eraxel-dev/unravel.git",
+    "url": "https://github.com/eraxel-dev/typetrace.git",
     "directory": "packages/trace-engine"
   },
-  "homepage": "https://github.com/eraxel-dev/unravel#readme",
+  "homepage": "https://github.com/eraxel-dev/typetrace#readme",
   "dependencies": {
     "@typetrace/shared": "workspace:*",
     "typescript": "^5.7.2"

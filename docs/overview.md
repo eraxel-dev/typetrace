@@ -1,4 +1,4 @@
-# Unravel
+# Typetrace
 
 **TypeScript Type Inference Debugger**
 
@@ -8,7 +8,7 @@ Version: 1.0.0
 
 ## 1. Overview
 
-Unravel is a CLI tool that analyzes the TypeScript Compiler's type inference process and visualizes the step-by-step path taken to arrive at a final type.
+Typetrace is a CLI tool that analyzes the TypeScript Compiler's type inference process and visualizes the step-by-step path taken to arrive at a final type.
 
 **Problem:** TypeScript today only shows the final result:
 
@@ -17,7 +17,7 @@ const result = fetchUser()
 // → User | null
 ```
 
-**Solution:** Unravel shows how that result was reached:
+**Solution:** Typetrace shows how that result was reached:
 
 ```
 fetchUser()
@@ -50,7 +50,7 @@ User | null
 ### `trace` — Show type inference path
 
 ```sh
-unravel trace src/index.ts
+typetrace trace src/index.ts
 ```
 
 Output:
@@ -66,7 +66,7 @@ Step 5  User | null
 ### `explain` — Natural-language explanation of inference
 
 ```sh
-unravel explain src/index.ts
+typetrace explain src/index.ts
 ```
 
 Output:
@@ -84,15 +84,15 @@ Final type: User | null
 ### `graph` — Generate inference graph
 
 ```sh
-unravel graph src/index.ts
+typetrace graph src/index.ts
 ```
 
-Output: `unravel.svg`
+Output: `typetrace.svg`
 
 ### `--json` flag — Machine-readable output
 
 ```sh
-unravel trace src/index.ts --json
+typetrace trace src/index.ts --json
 ```
 
 Output:
@@ -147,11 +147,11 @@ Output:
 ## 8. CLI Specification
 
 ```sh
-unravel trace <file>      # Show type inference steps
-unravel explain <file>    # Explain inference in plain English
-unravel graph <file>      # Generate SVG inference graph
-unravel doctor            # Diagnose environment
-unravel version           # Print version
+typetrace trace <file>      # Show type inference steps
+typetrace explain <file>    # Explain inference in plain English
+typetrace graph <file>      # Generate SVG inference graph
+typetrace doctor            # Diagnose environment
+typetrace version           # Print version
 ```
 
 ---
@@ -159,7 +159,7 @@ unravel version           # Print version
 ## 9. `doctor` — Environment Diagnostics
 
 ```sh
-unravel doctor
+typetrace doctor
 ```
 
 Output:

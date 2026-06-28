@@ -24,7 +24,7 @@ let writeSpy: ReturnType<typeof vi.spyOn>;
 
 beforeEach(() => {
   originalCwd = process.cwd();
-  root = mkdtempSync(join(tmpdir(), "unravel-doctor-"));
+  root = mkdtempSync(join(tmpdir(), "typetrace-doctor-"));
   stdout = "";
   writeSpy = vi
     .spyOn(process.stdout, "write")

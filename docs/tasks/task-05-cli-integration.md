@@ -17,9 +17,9 @@ Implement `packages/cli` — the entry point users invoke. Wire all packages tog
 
 | Command | Flags | Behavior |
 |---------|-------|----------|
-| `unravel trace <file>` | `--json` | Run `traceNode`, render with `TextReporter` (default) or `JsonReporter` |
-| `unravel doctor` | — | Print environment diagnostics |
-| `unravel version` | — | Print `unravel/<version>` |
+| `typetrace trace <file>` | `--json` | Run `traceNode`, render with `TextReporter` (default) or `JsonReporter` |
+| `typetrace doctor` | — | Print environment diagnostics |
+| `typetrace version` | — | Print `typetrace/<version>` |
 
 `explain` and `graph` commands are **not** in v0.1.
 
@@ -34,7 +34,7 @@ Use `commander` for argument parsing.
 import { Command } from "commander"
 
 const program = new Command()
-  .name("unravel")
+  .name("typetrace")
   .description("TypeScript type inference debugger")
   .version(VERSION)
 
@@ -94,7 +94,7 @@ All errors are caught at the top-level `main()` try/catch; never let unhandled r
 
 ### Binary
 
-- `packages/cli/package.json` sets `"bin": { "unravel": "dist/index.js" }`
+- `packages/cli/package.json` sets `"bin": { "typetrace": "dist/index.js" }`
 - Add shebang `#!/usr/bin/env node` at top of entry file
 - `pnpm build` compiles to `dist/` via `tsc`
 
@@ -113,13 +113,13 @@ Create fixture TypeScript projects under `packages/cli/fixtures/`:
 Each fixture has a `src/index.ts` that the CLI targets.
 
 For each fixture, assert:
-- `unravel trace src/index.ts` exits 0 and stdout matches snapshot
-- `unravel trace src/index.ts --json` exits 0 and stdout is valid JSON matching `TraceResult` shape
+- `typetrace trace src/index.ts` exits 0 and stdout matches snapshot
+- `typetrace trace src/index.ts --json` exits 0 and stdout is valid JSON matching `TraceResult` shape
 
 Also assert:
-- `unravel trace missing.ts` exits 1 with `Cannot locate tsconfig.json` on stderr
-- `unravel doctor` exits 0 and stdout contains `TypeScript:` line
-- `unravel version` exits 0 and stdout contains the package version string
+- `typetrace trace missing.ts` exits 1 with `Cannot locate tsconfig.json` on stderr
+- `typetrace doctor` exits 0 and stdout contains `TypeScript:` line
+- `typetrace version` exits 0 and stdout contains the package version string
 
 ## Deliverables
 
@@ -130,7 +130,7 @@ Also assert:
 - [ ] `packages/cli/fixtures/` — five fixture projects (each with `tsconfig.json` + `src/index.ts`)
 - [ ] Integration tests for all fixtures and error cases (listed above)
 - [ ] `packages/cli/package.json` with `bin` field and `commander` dependency
-- [ ] Root `README.md` with installation and quickstart (`npx unravel trace`)
+- [ ] Root `README.md` with installation and quickstart (`npx typetrace trace`)
 
 ## Out of Scope
 

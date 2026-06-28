@@ -149,7 +149,7 @@ const CONDITIONAL_FIXTURE = "type Cond<T> = T extends string ? 'yes' : 'no';\nex
 
 beforeEach(() => {
   clearTraceCaches();
-  projectDir = mkdtempSync(join(tmpdir(), "unravel-trace-engine-"));
+  projectDir = mkdtempSync(join(tmpdir(), "typetrace-trace-engine-"));
 });
 
 afterEach(() => {

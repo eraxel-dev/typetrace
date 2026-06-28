@@ -12,7 +12,7 @@ export interface TraceOptions {
 }
 
 /**
- * Handle `unravel trace <file>`.
+ * Handle `typetrace trace <file>`.
  *
  * Resolves the project's `tsconfig.json` by walking up from the target file,
  * loads the program, selects the node to trace (first top-level variable

@@ -5,7 +5,7 @@ import { clearProgramCache, loadProject } from "@typetrace/project-loader";
 import { findTsconfig } from "../utils/find-tsconfig.js";
 
 /**
- * Handle `unravel doctor`.
+ * Handle `typetrace doctor`.
  *
  * Prints an environment diagnostic table. Each check runs in sequence; a
  * failing check reports its error inline and the next check still runs, so the

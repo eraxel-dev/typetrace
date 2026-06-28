@@ -2,7 +2,7 @@
 
 ## Objective
 
-Implement `packages/trace-engine` — the core of Unravel. Given an AST node, it reconstructs the step-by-step type transformation path that TypeScript's checker followed to arrive at the final type.
+Implement `packages/trace-engine` — the core of Typetrace. Given an AST node, it reconstructs the step-by-step type transformation path that TypeScript's checker followed to arrive at the final type.
 
 This is the most critical and complex module in the project.
 

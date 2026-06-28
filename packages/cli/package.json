@@ -33,10 +33,10 @@
   "author": "Eraxel.Dev",
   "repository": {
     "type": "git",
-    "url": "https://github.com/eraxel-dev/unravel.git",
+    "url": "https://github.com/eraxel-dev/typetrace.git",
     "directory": "packages/cli"
   },
-  "homepage": "https://github.com/eraxel-dev/unravel#readme",
+  "homepage": "https://github.com/eraxel-dev/typetrace#readme",
   "engines": {
     "node": ">=20"
   },
