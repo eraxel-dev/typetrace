@@ -1,8 +1,7 @@
 import type { TraceResult, TraceStep } from "@typetrace/shared";
 
+import { EMPTY_STEPS_MESSAGE } from "./messages.js";
 import type { Reporter } from "./types.js";
-
-const EMPTY_STEPS_MESSAGE = "No inference steps — type is a plain literal.";
 
 /**
  * Render a {@link TraceResult} as a plain-English narrative of how a symbol's
