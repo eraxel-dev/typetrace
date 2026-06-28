@@ -156,6 +156,43 @@ describe("cli: trace command (JSON output)", () => {
   });
 });
 
+describe("cli: explain command", () => {
+  it("explains the generic-infer fixture, exits 0 and matches the snapshot", () => {
+    const result = runCli(["explain", fixtureEntry("generic-infer")]);
+
+    expect(result.stderr).toBe("");
+    expect(result.status).toBe(0);
+    expect(result.stdout).toMatchSnapshot();
+    expect(result.stdout).toContain("Final type: T");
+    expect(result.stdout).toContain("Reason:");
+    expect(result.stdout).toContain("was inferred as");
+  });
+
+  it("prints the plain-literal message for a fixture with no inference steps", () => {
+    const result = runCli(["explain", fixtureEntry("primitive")]);
+
+    expect(result.stderr).toBe("");
+    expect(result.status).toBe(0);
+    expect(result.stdout).toContain("No inference steps — type is a plain literal.");
+    expect(result.stdout).toContain("Final type: 42");
+  });
+
+  it("exits 1 with 'Cannot locate tsconfig.json' when no tsconfig is found", () => {
+    const result = runCli(["explain", "/missing.ts"]);
+
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain("Cannot locate tsconfig.json");
+    expect(result.stdout).toBe("");
+  });
+
+  it("exits 1 with 'Failed to resolve symbol' when the file has no traceable declaration", () => {
+    const result = runCli(["explain", join(fixturesDir, "primitive", "tsconfig.json")]);
+
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain("Failed to resolve symbol");
+  });
+});
+
 describe("cli: error handling", () => {
   it("exits 1 with 'Cannot locate tsconfig.json' when no tsconfig is found", () => {
     const result = runCli(["trace", "/missing.ts"]);
