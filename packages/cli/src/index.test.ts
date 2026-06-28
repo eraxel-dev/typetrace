@@ -6,6 +6,7 @@ import type { Command } from "commander";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { traceCommand } from "./commands/trace.js";
+import { explainCommand } from "./commands/explain.js";
 import { doctorCommand } from "./commands/doctor.js";
 import { buildProgram } from "./index.js";
 
@@ -19,6 +20,10 @@ import { buildProgram } from "./index.js";
 
 vi.mock("./commands/trace.js", () => ({
   traceCommand: vi.fn(),
+}));
+
+vi.mock("./commands/explain.js", () => ({
+  explainCommand: vi.fn(),
 }));
 
 vi.mock("./commands/doctor.js", () => ({
@@ -70,11 +75,20 @@ describe("buildProgram", () => {
     expect(program.description()).toBe("TypeScript type inference debugger");
   });
 
-  it("registers exactly the trace, doctor and version commands", () => {
+  it("registers exactly the trace, explain, doctor and version commands", () => {
     const program = buildProgram();
 
     const names = program.commands.map((command) => command.name()).sort();
-    expect(names).toEqual(["doctor", "trace", "version"]);
+    expect(names).toEqual(["doctor", "explain", "trace", "version"]);
+  });
+
+  it("dispatches `explain <file>` to explainCommand", () => {
+    const program = buildProgram();
+
+    parse(program, ["explain", "src/index.ts"]);
+
+    expect(explainCommand).toHaveBeenCalledTimes(1);
+    expect(explainCommand).toHaveBeenCalledWith("src/index.ts");
   });
 
   it("dispatches `trace <file>` to traceCommand with text output by default", () => {

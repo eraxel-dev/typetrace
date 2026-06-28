@@ -1,5 +1,15 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`cli: explain command > explains the generic-infer fixture, exits 0 and matches the snapshot 1`] = `
+"T
+
+Reason:
+  T was inferred as string
+
+Final type: T
+"
+`;
+
 exports[`cli: trace command (text output) > traces the conditional-type fixture and matches the text snapshot 1`] = `
 "Symbol: T extends string ? "yes" : "no"
 

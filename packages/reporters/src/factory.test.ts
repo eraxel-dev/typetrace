@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import type { ReporterFormat } from "./types.js";
+import { ExplainReporter } from "./explain.js";
 import { JsonReporter } from "./json.js";
 import { TextReporter } from "./text.js";
 import { createReporter, isReporterFormat } from "./factory.js";
@@ -14,6 +15,10 @@ describe("createReporter", () => {
     expect(createReporter("json")).toBeInstanceOf(JsonReporter);
   });
 
+  it("returns an ExplainReporter for \"explain\"", () => {
+    expect(createReporter("explain")).toBeInstanceOf(ExplainReporter);
+  });
+
   it("throws with the expected message for an unknown format", () => {
     expect(() =>
       createReporter("unknown" as unknown as ReporterFormat),
@@ -25,6 +30,7 @@ describe("isReporterFormat", () => {
   it("accepts the supported formats", () => {
     expect(isReporterFormat("text")).toBe(true);
     expect(isReporterFormat("json")).toBe(true);
+    expect(isReporterFormat("explain")).toBe(true);
   });
 
   it("rejects unsupported or non-string values", () => {

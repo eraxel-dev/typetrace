@@ -1,8 +1,7 @@
 import type { TraceResult, TraceStep } from "@typetrace/shared";
 
+import { EMPTY_STEPS_MESSAGE } from "./messages.js";
 import type { Reporter } from "./types.js";
-
-const EMPTY_STEPS_MESSAGE = "No inference steps — type is a plain literal.";
 
 export class TextReporter implements Reporter {
   render(result: TraceResult): string {

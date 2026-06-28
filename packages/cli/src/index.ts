@@ -6,6 +6,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import { Command } from "commander";
 
 import { doctorCommand } from "./commands/doctor.js";
+import { explainCommand } from "./commands/explain.js";
 import { traceCommand } from "./commands/trace.js";
 
 export type { TraceResult } from "@typetrace/shared";
@@ -44,6 +45,14 @@ export function buildProgram(): Command {
     .option("--json", "Output as JSON")
     .action((file: string, opts: { json?: boolean }) => {
       traceCommand(file, opts);
+    });
+
+  program
+    .command("explain")
+    .argument("<file>", "TypeScript source file to explain")
+    .description("Explain type inference in plain English")
+    .action((file: string) => {
+      explainCommand(file);
     });
 
   program
