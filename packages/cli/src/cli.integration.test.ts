@@ -1,5 +1,6 @@
 import { spawnSync } from "node:child_process";
-import { existsSync } from "node:fs";
+import { existsSync, mkdtempSync, readFileSync, rmSync } from "node:fs";
+import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -27,9 +28,10 @@ interface RunResult {
   stderr: string;
 }
 
-function runCli(args: string[]): RunResult {
+function runCli(args: string[], cwd?: string): RunResult {
   const result = spawnSync(process.execPath, [cliEntry, ...args], {
     encoding: "utf8",
+    cwd,
   });
   return {
     status: result.status ?? -1,
@@ -190,6 +192,58 @@ describe("cli: explain command", () => {
 
     expect(result.status).toBe(1);
     expect(result.stderr).toContain("Failed to resolve symbol");
+  });
+});
+
+describe("cli: graph command", () => {
+  it("writes a valid typetrace.svg for the generic-infer fixture and exits 0", () => {
+    const outDir = mkdtempSync(join(tmpdir(), "typetrace-graph-"));
+    try {
+      const result = runCli(["graph", fixtureEntry("generic-infer")], outDir);
+
+      expect(result.stderr).toBe("");
+      expect(result.status).toBe(0);
+      expect(result.stdout.trim()).toBe("Wrote typetrace.svg");
+
+      const svgPath = join(outDir, "typetrace.svg");
+      expect(existsSync(svgPath)).toBe(true);
+
+      const svg = readFileSync(svgPath, "utf8");
+      expect(svg).toContain("<svg");
+      expect(svg).toContain("<rect");
+    } finally {
+      rmSync(outDir, { recursive: true, force: true });
+    }
+  });
+
+  it("writes a self-contained typetrace.html with --html", () => {
+    const outDir = mkdtempSync(join(tmpdir(), "typetrace-graph-"));
+    try {
+      const result = runCli(
+        ["graph", fixtureEntry("generic-infer"), "--html"],
+        outDir,
+      );
+
+      expect(result.stderr).toBe("");
+      expect(result.status).toBe(0);
+      expect(result.stdout.trim()).toBe("Wrote typetrace.html");
+
+      const htmlPath = join(outDir, "typetrace.html");
+      expect(existsSync(htmlPath)).toBe(true);
+
+      const html = readFileSync(htmlPath, "utf8");
+      expect(html).toContain("<!DOCTYPE html>");
+      expect(html).toContain("<svg");
+    } finally {
+      rmSync(outDir, { recursive: true, force: true });
+    }
+  });
+
+  it("exits 1 with 'Cannot locate tsconfig.json' when no tsconfig is found", () => {
+    const result = runCli(["graph", "/missing.ts"]);
+
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain("Cannot locate tsconfig.json");
   });
 });
 
