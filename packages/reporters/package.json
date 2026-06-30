@@ -27,6 +27,14 @@
   },
   "homepage": "https://github.com/eraxel-dev/typetrace#readme",
   "dependencies": {
-    "@typetrace/shared": "workspace:*"
+    "@svgdotjs/svg.js": "^3.2.5",
+    "@typetrace/graph-engine": "workspace:*",
+    "@typetrace/shared": "workspace:*",
+    "dagre": "^0.8.5",
+    "svgdom": "^0.1.23"
+  },
+  "devDependencies": {
+    "@types/dagre": "^0.7.54",
+    "@types/svgdom": "^0.1.2"
   }
 }

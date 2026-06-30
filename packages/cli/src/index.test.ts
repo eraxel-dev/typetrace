@@ -7,6 +7,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { traceCommand } from "./commands/trace.js";
 import { explainCommand } from "./commands/explain.js";
+import { graphCommand } from "./commands/graph.js";
 import { doctorCommand } from "./commands/doctor.js";
 import { buildProgram } from "./index.js";
 
@@ -24,6 +25,10 @@ vi.mock("./commands/trace.js", () => ({
 
 vi.mock("./commands/explain.js", () => ({
   explainCommand: vi.fn(),
+}));
+
+vi.mock("./commands/graph.js", () => ({
+  graphCommand: vi.fn(),
 }));
 
 vi.mock("./commands/doctor.js", () => ({
@@ -75,11 +80,11 @@ describe("buildProgram", () => {
     expect(program.description()).toBe("TypeScript type inference debugger");
   });
 
-  it("registers exactly the trace, explain, doctor and version commands", () => {
+  it("registers exactly the trace, explain, graph, doctor and version commands", () => {
     const program = buildProgram();
 
     const names = program.commands.map((command) => command.name()).sort();
-    expect(names).toEqual(["doctor", "explain", "trace", "version"]);
+    expect(names).toEqual(["doctor", "explain", "graph", "trace", "version"]);
   });
 
   it("dispatches `explain <file>` to explainCommand", () => {
@@ -106,6 +111,23 @@ describe("buildProgram", () => {
     parse(program, ["trace", "src/index.ts", "--json"]);
 
     expect(traceCommand).toHaveBeenCalledWith("src/index.ts", { json: true });
+  });
+
+  it("dispatches `graph <file>` to graphCommand with SVG output by default", () => {
+    const program = buildProgram();
+
+    parse(program, ["graph", "src/index.ts"]);
+
+    expect(graphCommand).toHaveBeenCalledTimes(1);
+    expect(graphCommand).toHaveBeenCalledWith("src/index.ts", {});
+  });
+
+  it("passes the --html flag through to graphCommand", () => {
+    const program = buildProgram();
+
+    parse(program, ["graph", "src/index.ts", "--html"]);
+
+    expect(graphCommand).toHaveBeenCalledWith("src/index.ts", { html: true });
   });
 
   it("dispatches `doctor` to doctorCommand", () => {
