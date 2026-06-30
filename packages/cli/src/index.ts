@@ -7,6 +7,7 @@ import { Command } from "commander";
 
 import { doctorCommand } from "./commands/doctor.js";
 import { explainCommand } from "./commands/explain.js";
+import { graphCommand } from "./commands/graph.js";
 import { traceCommand } from "./commands/trace.js";
 
 export type { TraceResult } from "@typetrace/shared";
@@ -53,6 +54,15 @@ export function buildProgram(): Command {
     .description("Explain type inference in plain English")
     .action((file: string) => {
       explainCommand(file);
+    });
+
+  program
+    .command("graph")
+    .argument("<file>", "TypeScript source file to graph")
+    .description("Generate SVG inference graph")
+    .option("--html", "Output as self-contained HTML instead of SVG")
+    .action((file: string, opts: { html?: boolean }) => {
+      graphCommand(file, opts);
     });
 
   program
