@@ -4,6 +4,7 @@ import type { ReporterFormat } from "./types.js";
 import { ExplainReporter } from "./explain.js";
 import { HtmlReporter } from "./html.js";
 import { JsonReporter } from "./json.js";
+import { MermaidReporter } from "./mermaid.js";
 import { SvgReporter } from "./svg.js";
 import { TextReporter } from "./text.js";
 import { createReporter, isReporterFormat } from "./factory.js";
@@ -29,6 +30,10 @@ describe("createReporter", () => {
     expect(createReporter("html")).toBeInstanceOf(HtmlReporter);
   });
 
+  it("returns a MermaidReporter for \"mermaid\"", () => {
+    expect(createReporter("mermaid")).toBeInstanceOf(MermaidReporter);
+  });
+
   it("throws with the expected message for an unknown format", () => {
     expect(() =>
       createReporter("unknown" as unknown as ReporterFormat),
@@ -43,6 +48,7 @@ describe("isReporterFormat", () => {
     expect(isReporterFormat("explain")).toBe(true);
     expect(isReporterFormat("svg")).toBe(true);
     expect(isReporterFormat("html")).toBe(true);
+    expect(isReporterFormat("mermaid")).toBe(true);
   });
 
   it("rejects unsupported or non-string values", () => {

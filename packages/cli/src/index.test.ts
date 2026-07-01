@@ -119,15 +119,17 @@ describe("buildProgram", () => {
     parse(program, ["graph", "src/index.ts"]);
 
     expect(graphCommand).toHaveBeenCalledTimes(1);
-    expect(graphCommand).toHaveBeenCalledWith("src/index.ts", {});
+    expect(graphCommand).toHaveBeenCalledWith("src/index.ts", { format: "svg" });
   });
 
-  it("passes the --html flag through to graphCommand", () => {
+  it("passes the --format flag through to graphCommand", () => {
     const program = buildProgram();
 
-    parse(program, ["graph", "src/index.ts", "--html"]);
+    parse(program, ["graph", "src/index.ts", "--format", "mermaid"]);
 
-    expect(graphCommand).toHaveBeenCalledWith("src/index.ts", { html: true });
+    expect(graphCommand).toHaveBeenCalledWith("src/index.ts", {
+      format: "mermaid",
+    });
   });
 
   it("dispatches `doctor` to doctorCommand", () => {
