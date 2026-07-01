@@ -59,9 +59,13 @@ export function buildProgram(): Command {
   program
     .command("graph")
     .argument("<file>", "TypeScript source file to graph")
-    .description("Generate SVG inference graph")
-    .option("--html", "Output as self-contained HTML instead of SVG")
-    .action((file: string, opts: { html?: boolean }) => {
+    .description("Generate inference graph")
+    .option(
+      "--format <fmt>",
+      "Output format: svg | html | mermaid (default: svg)",
+      "svg",
+    )
+    .action((file: string, opts: { format: string }) => {
       graphCommand(file, opts);
     });
 
