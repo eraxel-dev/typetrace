@@ -239,7 +239,7 @@ describe("cli: graph command", () => {
     }
   });
 
-  it("writes a typetrace.md containing 'graph TD' with --format mermaid", () => {
+  it("writes a typetrace.mmd containing 'graph TD' with --format mermaid", () => {
     const outDir = mkdtempSync(join(tmpdir(), "typetrace-graph-"));
     try {
       const result = runCli(
@@ -249,9 +249,9 @@ describe("cli: graph command", () => {
 
       expect(result.stderr).toBe("");
       expect(result.status).toBe(0);
-      expect(result.stdout.trim()).toBe("Wrote typetrace.md");
+      expect(result.stdout.trim()).toBe("Wrote typetrace.mmd");
 
-      const mdPath = join(outDir, "typetrace.md");
+      const mdPath = join(outDir, "typetrace.mmd");
       expect(existsSync(mdPath)).toBe(true);
 
       const md = readFileSync(mdPath, "utf8");

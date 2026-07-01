@@ -13,14 +13,16 @@ export interface GraphOptions {
 }
 
 /** Output file name for each supported graph format. */
-const OUTPUT_FILES: Record<"svg" | "html" | "mermaid", string> = {
+const OUTPUT_FILES = {
   svg: "typetrace.svg",
   html: "typetrace.html",
-  mermaid: "typetrace.md",
-};
+  mermaid: "typetrace.mmd",
+} as const satisfies Record<string, string>;
 
-function isGraphFormat(value: string): value is "svg" | "html" | "mermaid" {
-  return value === "svg" || value === "html" || value === "mermaid";
+type GraphFormat = keyof typeof OUTPUT_FILES;
+
+function isGraphFormat(value: string): value is GraphFormat {
+  return Object.prototype.hasOwnProperty.call(OUTPUT_FILES, value);
 }
 
 /**
@@ -32,7 +34,7 @@ function isGraphFormat(value: string): value is "svg" | "html" | "mermaid" {
  * `traceNode`, then render the result in the format chosen by `--format`
  * (`svg` default, `html`, or `mermaid`). Unlike the read-only reporters, this
  * command owns the side effect: it writes the rendered output to the matching
- * file (`typetrace.svg`/`.html`/`.md`) in the current working directory and
+ * file (`typetrace.svg`/`.html`/`.mmd`) in the current working directory and
  * prints `Wrote <filename>` to stdout. Unknown formats are rejected before any
  * project work; remaining error paths throw and are handled by `main`.
  *
@@ -60,7 +62,7 @@ export function graphCommand(file: string, opts: GraphOptions): void {
   const node = selectTraceNode(sourceFile);
   const result = traceNode(node, context);
 
-  const reporter = createReporter(format satisfies ReporterFormat);
+  const reporter = createReporter(format);
   const output = reporter.render(result);
 
   const fileName = OUTPUT_FILES[format];
