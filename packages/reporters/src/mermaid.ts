@@ -19,11 +19,14 @@ function nodeId(index: number): string {
 
 /**
  * Format a type string as a Mermaid node label. Mermaid's flowchart syntax
- * breaks on `<`, `>` and `"`, so any label containing one of those is wrapped in
- * double quotes, with embedded quotes escaped to the `&quot;` entity.
+ * treats `<`, `>`, `"`, `[`, `]`, `{`, `}`, `|` and `()` as structural, so any
+ * label containing one of those (common in real TS types: arrays like
+ * `number[]`, unions like `Cat | Dog`, object/mapped types) is wrapped in double
+ * quotes, with embedded quotes escaped to the `&quot;` entity. Wrapping in
+ * quotes neutralizes the remaining structural characters as well.
  */
 function formatLabel(type: string): string {
-  if (/[<>"]/.test(type)) {
+  if (/[<>"[\]{}|()]/.test(type)) {
     return `"${type.replace(/"/g, "&quot;")}"`;
   }
   return type;

@@ -74,6 +74,25 @@ describe("MermaidReporter", () => {
     expect(out).toContain("B[User]");
   });
 
+  it("wraps labels with array or union structural characters in double quotes", () => {
+    const structural: TraceResult = {
+      symbol: "data",
+      finalType: "Cat | Dog",
+      steps: [
+        {
+          id: "1",
+          kind: "union",
+          sourceType: "number[]",
+          targetType: "Cat | Dog",
+          reason: "resolved element union",
+        },
+      ],
+    };
+    const out = new MermaidReporter().render(structural);
+    expect(out).toContain('A["number[]"]');
+    expect(out).toContain('B["Cat | Dog"]');
+  });
+
   it("escapes embedded double quotes to the &quot; entity", () => {
     const quoted: TraceResult = {
       symbol: "x",
@@ -111,7 +130,47 @@ describe("MermaidReporter", () => {
     expect(lines[2]).toBe("  A[A] --> C[C]");
   });
 
-  it("matches the snapshot for shared and generic labels", () => {
-    expect(new MermaidReporter().render(threeStep)).toMatchSnapshot();
+  it("matches the snapshot for shared source and generic labels", () => {
+    const sharedGeneric: TraceResult = {
+      symbol: "data",
+      finalType: "Post",
+      steps: [
+        {
+          id: "1",
+          kind: "infer",
+          sourceType: "ApiResponse<User>",
+          targetType: "User",
+          reason: "infer U from ApiResponse<U>",
+        },
+        {
+          id: "2",
+          kind: "infer",
+          sourceType: "ApiResponse<User>",
+          targetType: "Post",
+          reason: "infer U from ApiResponse<U>",
+        },
+      ],
+    };
+    expect(new MermaidReporter().render(sharedGeneric)).toMatchSnapshot();
+  });
+
+  it("extends node IDs past Z with spreadsheet-style identifiers", () => {
+    // 26 steps introduce 27 unique type strings (T0..T26): the first 26 take
+    // IDs A..Z and the 27th must roll over to AA.
+    const steps = Array.from({ length: 26 }, (_, index) => ({
+      id: String(index + 1),
+      kind: "union" as const,
+      sourceType: `T${String(index)}`,
+      targetType: `T${String(index + 1)}`,
+      reason: "",
+    }));
+    const many: TraceResult = { symbol: "x", finalType: "T26", steps };
+
+    const out = new MermaidReporter().render(many);
+    const lines = out.split("\n");
+
+    // Step 26 goes from T25 (26th unique type -> Z) to T26 (27th unique -> AA).
+    expect(lines[26]).toBe("  Z[T25] --> AA[T26]");
+    expect(out).not.toContain("[A][");
   });
 });

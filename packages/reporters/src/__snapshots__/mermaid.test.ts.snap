@@ -5,11 +5,10 @@ exports[`MermaidReporter > matches the snapshot for an empty step list 1`] = `
   A[42]"
 `;
 
-exports[`MermaidReporter > matches the snapshot for shared and generic labels 1`] = `
+exports[`MermaidReporter > matches the snapshot for shared source and generic labels 1`] = `
 "graph TD
-  A[ApiResponse] --> B[ExtractData]
-  B[ExtractData] --> C[infer U]
-  C[infer U] --> D[User]"
+  A["ApiResponse<User>"] --> B[User]
+  A["ApiResponse<User>"] --> C[Post]"
 `;
 
 exports[`MermaidReporter > renders a three-step result with sequential node IDs 1`] = `
