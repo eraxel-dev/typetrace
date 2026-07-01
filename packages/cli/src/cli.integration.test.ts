@@ -20,7 +20,7 @@ const here = dirname(fileURLToPath(import.meta.url));
 const packageRoot = resolve(here, "..");
 const cliEntry = join(packageRoot, "dist", "index.js");
 const fixturesDir = join(packageRoot, "fixtures");
-const packageVersion = "0.1.0";
+const packageVersion = "0.2.0";
 
 interface RunResult {
   status: number;
