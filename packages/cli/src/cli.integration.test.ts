@@ -216,11 +216,11 @@ describe("cli: graph command", () => {
     }
   });
 
-  it("writes a self-contained typetrace.html with --html", () => {
+  it("writes a self-contained typetrace.html with --format html", () => {
     const outDir = mkdtempSync(join(tmpdir(), "typetrace-graph-"));
     try {
       const result = runCli(
-        ["graph", fixtureEntry("generic-infer"), "--html"],
+        ["graph", fixtureEntry("generic-infer"), "--format", "html"],
         outDir,
       );
 
@@ -237,6 +237,40 @@ describe("cli: graph command", () => {
     } finally {
       rmSync(outDir, { recursive: true, force: true });
     }
+  });
+
+  it("writes a typetrace.md containing 'graph TD' with --format mermaid", () => {
+    const outDir = mkdtempSync(join(tmpdir(), "typetrace-graph-"));
+    try {
+      const result = runCli(
+        ["graph", fixtureEntry("generic-infer"), "--format", "mermaid"],
+        outDir,
+      );
+
+      expect(result.stderr).toBe("");
+      expect(result.status).toBe(0);
+      expect(result.stdout.trim()).toBe("Wrote typetrace.md");
+
+      const mdPath = join(outDir, "typetrace.md");
+      expect(existsSync(mdPath)).toBe(true);
+
+      const md = readFileSync(mdPath, "utf8");
+      expect(md).toContain("graph TD");
+    } finally {
+      rmSync(outDir, { recursive: true, force: true });
+    }
+  });
+
+  it("exits 1 with the unknown-format message for an unsupported --format", () => {
+    const result = runCli([
+      "graph",
+      fixtureEntry("generic-infer"),
+      "--format",
+      "bogus",
+    ]);
+
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain("Unknown graph format: bogus");
   });
 
   it("exits 1 with 'Cannot locate tsconfig.json' when no tsconfig is found", () => {

@@ -1,6 +1,7 @@
 import { ExplainReporter } from "./explain.js";
 import { HtmlReporter } from "./html.js";
 import { JsonReporter } from "./json.js";
+import { MermaidReporter } from "./mermaid.js";
 import { SvgReporter } from "./svg.js";
 import { TextReporter } from "./text.js";
 import type { Reporter, ReporterFormat } from "./types.js";
@@ -11,6 +12,7 @@ const REPORTER_FORMATS: readonly ReporterFormat[] = [
   "explain",
   "svg",
   "html",
+  "mermaid",
 ];
 
 export function isReporterFormat(value: unknown): value is ReporterFormat {
@@ -32,6 +34,8 @@ export function createReporter(format: ReporterFormat): Reporter {
       return new SvgReporter();
     case "html":
       return new HtmlReporter();
+    case "mermaid":
+      return new MermaidReporter();
     default: {
       const exhaustiveCheck: never = format;
       throw new Error(`Unknown reporter format: ${String(exhaustiveCheck)}`);

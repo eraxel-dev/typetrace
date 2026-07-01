@@ -6,4 +6,5 @@ export { JsonReporter } from "./json.js";
 export { ExplainReporter } from "./explain.js";
 export { SvgReporter } from "./svg.js";
 export { HtmlReporter } from "./html.js";
+export { MermaidReporter } from "./mermaid.js";
 export { createReporter, isReporterFormat } from "./factory.js";
